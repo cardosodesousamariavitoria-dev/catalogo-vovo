@@ -119,7 +119,7 @@ produtos = [
         "nome": "Edredom",
         "preco": 160.00,
         "descricao": "Edredom",
-        "imagem": "Edredon.jpg.jpeg",
+        "imagem": "edredom.jpg.jpeg",
         "tamanho": "Grande",
         "cores": "Rosa com flores",
         "disponivel": True
@@ -128,7 +128,7 @@ produtos = [
         "nome": "Manta",
         "preco": 160.00,
         "descricao": "Manta",
-        "imagem": "Manta.jpg.jpeg",
+        "imagem": "manta.jpg.jpeg",
         "tamanho": "Grande",
         "cores": "Marrom, cinza e branca",
         "disponivel": True
