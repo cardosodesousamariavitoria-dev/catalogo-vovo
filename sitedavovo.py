@@ -12,7 +12,7 @@ telefone = "5563984996508"
 st.title("🛏️ Catálogo de Cama, Mesa e Banho")
 st.write("Escolha seu produto e peça direto pelo WhatsApp 💚")
 
-st.info("🛌 Temos opção de adicionar lençol (para se cobrir) + R$ 100,00")
+#st.info("🛌 Temos opção de adicionar lençol (para se cobrir) + R$ 100,00")
 st.success("💳 Pix e dinheiro")
 
 produtos = [
