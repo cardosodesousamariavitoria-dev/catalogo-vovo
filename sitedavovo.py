@@ -9,160 +9,113 @@ st.set_page_config(
 
 telefone = "5563984996508"
 
+# 🎨 ESTILO (cores corrigidas)
 st.markdown("""
 <style>
 .stApp {
     background-color: #fff7f8;
 }
+
+/* TÍTULO */
 .titulo {
     text-align: center;
-    color: #9b3f57;
+    color: #7a1f35;
     font-size: 46px;
     font-weight: 800;
 }
+
+/* SUBTÍTULO */
 .subtitulo {
     text-align: center;
-    color: #5c2d35;
+    color: #3a1f24;
     font-size: 20px;
     margin-bottom: 25px;
 }
+
+/* CARD */
 .card {
     background-color: white;
     padding: 18px;
     border-radius: 20px;
-    box-shadow: 0px 4px 18px rgba(0,0,0,0.10);
+    box-shadow: 0px 4px 18px rgba(0,0,0,0.12);
     margin-bottom: 25px;
 }
+
+/* TEXTO */
+.card p {
+    color: #1a1a1a !important;
+}
+
+/* NOME DO PRODUTO */
+.card h3 {
+    color: #2b0d14 !important;
+    font-weight: 700;
+}
+
+/* PREÇO */
 .preco {
-    color: #b83250;
+    color: #c1121f;
     font-size: 28px;
     font-weight: 800;
 }
+
+/* INFO */
 .info {
-    background-color: #ffe3ea;
+    background-color: #ffd6e0;
     padding: 14px;
     border-radius: 14px;
     text-align: center;
-    color: #7a2e43;
+    color: #4a1c27;
     font-size: 18px;
     margin-bottom: 25px;
 }
 </style>
 """, unsafe_allow_html=True)
 
+# 🏷️ TÍTULO
 st.markdown("<div class='titulo'>🛏️ Enxovais da Vovó</div>", unsafe_allow_html=True)
 st.markdown("<div class='subtitulo'>Conforto, qualidade e carinho em cada peça 💖</div>", unsafe_allow_html=True)
 
+# 📢 INFO
 st.markdown(
     "<div class='info'>💳 Pagamento via Pix e dinheiro | 📲 Pedido direto pelo WhatsApp</div>",
     unsafe_allow_html=True
 )
 
+# 📦 PRODUTOS
 produtos = [
     {
-        "nome": "Jogo de Lençol Casal com elástico Floral",
-        "preco": 130.00,
-        "descricao": "Lençol + 2 fronhas",
-        "imagem": "lencol1.jpg",
-        "tamanho": "Casal",
-        "cores": "Floral rosa",
-        "disponivel": False
-    },
-    {
         "nome": "Toalha de Banho",
         "preco": 70.00,
-        "descricao": "Toalha grande e macia",
+        "descricao": "Toalha grande, macia e super confortável",
         "imagem": "toalha1.jpg.jpeg",
         "tamanho": "75cm x 1,50m",
-        "cores": "vermelha",
+        "cores": "Vermelha",
         "disponivel": True
     },
     {
         "nome": "Toalha de Banho",
         "preco": 70.00,
-        "descricao": "Toalha grande e macia",
+        "descricao": "Alta absorção e toque suave",
         "imagem": "toalha2.jpg.jpeg",
         "tamanho": "75cm x 1,50m",
-        "cores": "azul escuro",
+        "cores": "Azul escuro",
         "disponivel": True
     },
     {
-        "nome": "Toalha de Banho",
-        "preco": 70.00,
-        "descricao": "Toalha grande e macia",
-        "imagem": "toalha3.jpg.jpeg",
-        "tamanho": "75cm x 1,50m",
-        "cores": "azul claro",
-        "disponivel": True
-    },
-    {
-        "nome": "Toalha de Banho",
-        "preco": 70.00,
-        "descricao": "Toalha grande e macia",
-        "imagem": "toalha4.jpg.jpeg",
-        "tamanho": "75cm x 1,50m",
-        "cores": "verde",
-        "disponivel": True
-    },
-    {
-        "nome": "Jogo de Lençol de solteiro com elástico Floral",
+        "nome": "Lençol de Virol",
         "preco": 100.00,
-        "descricao": "Lençol + 1 fronha",
-        "imagem": "lencolsolteiro.jpg.jpeg",
-        "tamanho": "1,30m x 2,40m",
-        "cores": "Floral rosa",
-        "disponivel": True
-    },
-    {
-        "nome": "Lençol de virol (cobrir)",
-        "preco": 100.00,
-        "descricao": "Lençol",
+        "descricao": "Ideal para se cobrir, tecido leve e confortável",
         "imagem": "lencol1.jpg.jpeg",
         "tamanho": "1,80m x 2,40m",
         "cores": "Cinza",
         "disponivel": True
     },
     {
-        "nome": "Lençol de virol (cobrir)",
-        "preco": 100.00,
-        "descricao": "Lençol",
-        "imagem": "lencol2.jpg.jpeg",
-        "tamanho": "1,80m x 2,40m",
-        "cores": "Verde com folhas marrons",
-        "disponivel": True
-    },
-    {
-        "nome": "Lençol de virol (cobrir)",
-        "preco": 100.00,
-        "descricao": "Lençol",
-        "imagem": "lencol3.jpg.jpeg",
-        "tamanho": "1,80m x 2,40m",
-        "cores": "Rosa com bolinha",
-        "disponivel": True
-    },
-    {
-        "nome": "Lençol de virol (cobrir)",
-        "preco": 100.00,
-        "descricao": "Lençol",
-        "imagem": "lencol4.jpg.jpeg",
-        "tamanho": "1,80m x 2,40m",
-        "cores": "Verde com listras pretas",
-        "disponivel": True
-    },
-    {
-        "nome": "Lençol de virol (cobrir)",
-        "preco": 100.00,
-        "descricao": "Lençol",
-        "imagem": "lencol5.jpg.jpeg",
-        "tamanho": "1,80m x 2,40m",
-        "cores": "Rosa tropical",
-        "disponivel": True
-    },
-    {
         "nome": "Edredom",
         "preco": 160.00,
-        "descricao": "Edredom",
-        "imagem": "edredom.jpg.jpeg",
+        "descricao": "Super quentinho e macio",
+        "imagem": "edredon.jpg.jpeg",
         "tamanho": "Grande",
         "cores": "Rosa com flores",
         "disponivel": True
@@ -170,27 +123,20 @@ produtos = [
     {
         "nome": "Manta",
         "preco": 160.00,
-        "descricao": "Manta",
+        "descricao": "Perfeita para dias frios",
         "imagem": "manta.jpg.jpeg",
         "tamanho": "Grande",
-        "cores": "Marrom, cinza e branca",
-        "disponivel": True
-    },
-    {
-        "nome": "Pano de prato",
-        "preco": 20.00,
-        "descricao": "Pano de prato",
-        "imagem": "Pano de prato.jpg.jpeg",
-        "tamanho": "Padrão",
-        "cores": "Brancos com estampas",
+        "cores": "Marrom e cinza",
         "disponivel": True
     },
 ]
 
+# 🧱 LAYOUT
 cols = st.columns(3)
 
 for i, produto in enumerate(produtos):
     with cols[i % 3]:
+
         st.markdown("<div class='card'>", unsafe_allow_html=True)
 
         try:
@@ -200,11 +146,11 @@ for i, produto in enumerate(produtos):
 
         st.markdown(f"### {produto['nome']}")
         st.write(produto["descricao"])
-        st.write(f"📏 **Tamanho:** {produto['tamanho']}")
-        st.write(f"🎨 **Cor/estampa:** {produto['cores']}")
+        st.write(f"📏 Tamanho: {produto['tamanho']}")
+        st.write(f"🎨 Cor: {produto['cores']}")
 
-        preco_formatado = f"R$ {produto['preco']:.2f}".replace(".", ",")
-        st.markdown(f"<div class='preco'>{preco_formatado}</div>", unsafe_allow_html=True)
+        preco = f"R$ {produto['preco']:.2f}".replace(".", ",")
+        st.markdown(f"<div class='preco'>{preco}</div>", unsafe_allow_html=True)
 
         if produto["disponivel"]:
             st.success("✅ Em estoque")
@@ -212,10 +158,9 @@ for i, produto in enumerate(produtos):
             mensagem = f"""Olá! Tenho interesse neste produto:
 
 Produto: {produto['nome']}
-Descrição: {produto['descricao']}
 Tamanho: {produto['tamanho']}
-Cor/estampa: {produto['cores']}
-Preço: {preco_formatado}
+Cor: {produto['cores']}
+Preço: {preco}
 
 Pode me passar mais informações?"""
 
@@ -223,15 +168,15 @@ Pode me passar mais informações?"""
 
             st.link_button("📲 Pedir no WhatsApp", link)
         else:
-            st.error("❌ Indisponível no momento")
-            st.button("Indisponível", disabled=True, key=f"ind_{i}")
+            st.error("❌ Indisponível")
+            st.button("Indisponível", disabled=True, key=i)
 
         st.markdown("</div>", unsafe_allow_html=True)
 
+# 🔻 RODAPÉ
 st.write("---")
 st.markdown(
-    "<p style='text-align:center;'>📲 Atendimento direto pelo WhatsApp | Feito com carinho 💖</p>",
+    "<p style='text-align:center;'>💖 Feito com carinho | 📲 Atendimento pelo WhatsApp</p>",
     unsafe_allow_html=True
 )
-
 
