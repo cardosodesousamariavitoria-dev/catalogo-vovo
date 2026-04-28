@@ -2,18 +2,61 @@ import streamlit as st
 from urllib.parse import quote
 
 st.set_page_config(
-    page_title="Catálogo da Vovó",
+    page_title="Enxovais da Vovó",
     page_icon="🛏️",
     layout="wide"
 )
 
 telefone = "5563984996508"
 
-st.title("🛏️ Catálogo de Cama e Banho")
-st.write("Escolha seu produto e peça direto pelo WhatsApp 💚")
+st.markdown("""
+<style>
+.stApp {
+    background-color: #fff7f8;
+}
+.titulo {
+    text-align: center;
+    color: #9b3f57;
+    font-size: 46px;
+    font-weight: 800;
+}
+.subtitulo {
+    text-align: center;
+    color: #5c2d35;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.card {
+    background-color: white;
+    padding: 18px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 18px rgba(0,0,0,0.10);
+    margin-bottom: 25px;
+}
+.preco {
+    color: #b83250;
+    font-size: 28px;
+    font-weight: 800;
+}
+.info {
+    background-color: #ffe3ea;
+    padding: 14px;
+    border-radius: 14px;
+    text-align: center;
+    color: #7a2e43;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+</style>
+""", unsafe_allow_html=True)
 
-#st.info("🛌 Temos opção de adicionar lençol (para se cobrir) + R$ 100,00")
-st.success("💳 Pix e dinheiro")
+st.markdown("<div class='titulo'>🛏️ Enxovais da Vovó</div>", unsafe_allow_html=True)
+st.markdown("<div class='subtitulo'>Conforto, qualidade e carinho em cada peça 💖</div>", unsafe_allow_html=True)
+
+st.markdown(
+    "<div class='info'>💳 Pagamento via Pix e dinheiro | 📲 Pedido direto pelo WhatsApp</div>",
+    unsafe_allow_html=True
+)
 
 produtos = [
     {
@@ -144,43 +187,51 @@ produtos = [
     },
 ]
 
-cols = st.columns(2)
+cols = st.columns(3)
 
 for i, produto in enumerate(produtos):
-    with cols[i % 2]:
-        with st.container(border=True):
-            try:
-                st.image(f"imagens/{produto['imagem']}", use_container_width=True)
-            except:
-                st.warning("Imagem não encontrada")
+    with cols[i % 3]:
+        st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-            st.subheader(produto["nome"])
-            st.write(produto["descricao"])
+        try:
+            st.image(f"imagens/{produto['imagem']}", use_container_width=True)
+        except:
+            st.warning("Imagem não encontrada")
 
-            st.write(f"📏 Tamanho: {produto['tamanho']}")
-            st.write(f"🎨 Cor: {produto['cores']}")
-            st.markdown(f"### 💰 R$ {produto['preco']:.2f}".replace(".", ","))
+        st.markdown(f"### {produto['nome']}")
+        st.write(produto["descricao"])
+        st.write(f"📏 **Tamanho:** {produto['tamanho']}")
+        st.write(f"🎨 **Cor/estampa:** {produto['cores']}")
 
-            if produto["disponivel"]:
-                st.success("✅ Em estoque")
+        preco_formatado = f"R$ {produto['preco']:.2f}".replace(".", ",")
+        st.markdown(f"<div class='preco'>{preco_formatado}</div>", unsafe_allow_html=True)
 
-                total = produto["preco"]
+        if produto["disponivel"]:
+            st.success("✅ Em estoque")
 
-                mensagem = f"""Olá! Quero comprar:
+            mensagem = f"""Olá! Tenho interesse neste produto:
 
 Produto: {produto['nome']}
 Descrição: {produto['descricao']}
 Tamanho: {produto['tamanho']}
-Cor: {produto['cores']}
-Preço: R$ {produto['preco']:.2f}
-Total: R$ {total:.2f}""".replace(".", ",")
+Cor/estampa: {produto['cores']}
+Preço: {preco_formatado}
 
-                link = f"https://wa.me/{telefone}?text={quote(mensagem)}"
+Pode me passar mais informações?"""
 
-                st.link_button("📲 Pedir no WhatsApp", link)
-            else:
-                st.error("❌ Indisponível no momento")
-                st.button("Indisponível", disabled=True, key=f"ind_{i}")
+            link = f"https://wa.me/{telefone}?text={quote(mensagem)}"
+
+            st.link_button("📲 Pedir no WhatsApp", link)
+        else:
+            st.error("❌ Indisponível no momento")
+            st.button("Indisponível", disabled=True, key=f"ind_{i}")
+
+        st.markdown("</div>", unsafe_allow_html=True)
 
 st.write("---")
-st.write("📲 Atendimento direto pelo WhatsApp")
+st.markdown(
+    "<p style='text-align:center;'>📲 Atendimento direto pelo WhatsApp | Feito com carinho 💖</p>",
+    unsafe_allow_html=True
+)
+
+
