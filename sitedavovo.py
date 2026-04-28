@@ -136,26 +136,25 @@ cols = st.columns(3)
 
 for i, produto in enumerate(produtos):
     with cols[i % 3]:
+        with st.container(border=True):
 
-        st.markdown("<div class='card'>", unsafe_allow_html=True)
+            try:
+                st.image(f"imagens/{produto['imagem']}", use_container_width=True)
+            except:
+                st.warning("Imagem não encontrada")
 
-        try:
-            st.image(f"imagens/{produto['imagem']}", use_container_width=True)
-        except:
-            st.warning("Imagem não encontrada")
+            st.markdown(f"### {produto['nome']}")
+            st.write(produto["descricao"])
+            st.write(f"📏 **Tamanho:** {produto['tamanho']}")
+            st.write(f"🎨 **Cor:** {produto['cores']}")
 
-        st.markdown(f"### {produto['nome']}")
-        st.write(produto["descricao"])
-        st.write(f"📏 Tamanho: {produto['tamanho']}")
-        st.write(f"🎨 Cor: {produto['cores']}")
+            preco = f"R$ {produto['preco']:.2f}".replace(".", ",")
+            st.markdown(f"<div class='preco'>{preco}</div>", unsafe_allow_html=True)
 
-        preco = f"R$ {produto['preco']:.2f}".replace(".", ",")
-        st.markdown(f"<div class='preco'>{preco}</div>", unsafe_allow_html=True)
+            if produto["disponivel"]:
+                st.success("✅ Em estoque")
 
-        if produto["disponivel"]:
-            st.success("✅ Em estoque")
-
-            mensagem = f"""Olá! Tenho interesse neste produto:
+                mensagem = f"""Olá! Tenho interesse neste produto:
 
 Produto: {produto['nome']}
 Tamanho: {produto['tamanho']}
@@ -164,19 +163,10 @@ Preço: {preco}
 
 Pode me passar mais informações?"""
 
-            link = f"https://wa.me/{telefone}?text={quote(mensagem)}"
+                link = f"https://wa.me/{telefone}?text={quote(mensagem)}"
+                st.link_button("📲 Pedir no WhatsApp", link)
+            else:
+                st.error("❌ Indisponível")
+                st.button("Indisponível", disabled=True, key=f"ind_{i}")
 
-            st.link_button("📲 Pedir no WhatsApp", link)
-        else:
-            st.error("❌ Indisponível")
-            st.button("Indisponível", disabled=True, key=i)
-
-        st.markdown("</div>", unsafe_allow_html=True)
-
-# 🔻 RODAPÉ
-st.write("---")
-st.markdown(
-    "<p style='text-align:center;'>💖 Feito com carinho | 📲 Atendimento pelo WhatsApp</p>",
-    unsafe_allow_html=True
-)
 
